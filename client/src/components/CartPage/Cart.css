@@ -1,0 +1,23 @@
+@media screen and (max-width: 435px){
+	.cart_buy_btn{
+		padding:2% 10%;
+		box-shadow: none !important;
+		position: fixed;
+		bottom: 56px;
+		left: 0;
+	}
+	.cart_page{
+	  margin-bottom: 70px;
+	  overflow: scroll;
+	}
+}
+@media screen and (min-width: 435px){
+	.cart_buy_btn{
+	    bottom: 160px;
+	    position: fixed;
+	    left: 23px;
+	    padding: 2% 10%;
+	    min-width: 373px !important;
+	    box-shadow: none !important;
+	}
+}

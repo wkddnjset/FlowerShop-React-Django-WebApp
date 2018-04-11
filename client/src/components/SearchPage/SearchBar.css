@@ -1,0 +1,24 @@
+
+.search_bar{
+	margin-top: 0px;
+	height: 50px;
+}
+
+.search_input input{
+	color:#FFF !important;
+}
+.search_input div{
+	color:#ffffff9c !important;
+}
+.search_input hr:nth-child(1){
+	border-bottom: 1px solid rgb(255, 255, 255) !important;
+}
+.search_input hr:nth-child(2){
+	border-bottom: 2px solid rgb(255, 152, 0) !important;
+}
+.search_btn{
+	margin-top: -5px !important;
+}
+.search_bar div:nth-child(2){
+	margin-top: -10px !important;
+}
