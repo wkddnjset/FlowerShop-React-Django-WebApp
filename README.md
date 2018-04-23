@@ -19,3 +19,5 @@ Mac:client $ npm insatll
 Mac:React-Express-Dev-Setting $ npm run dev
 ```
 
+## ERD
+<img src="https://github.com/wkddnjset/FlowerShop-React-Django-WebApp/blob/master/Flower-ERD.png?raw=true">
