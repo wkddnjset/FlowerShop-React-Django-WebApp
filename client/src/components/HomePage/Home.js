@@ -11,18 +11,6 @@ import './Home.css'
  */
 
 
-const HomePage_Section = ({history}) => {
-    return (
-        <div className="home_page">
-        	<img src="images/home_header.png" width="100%" alt=""/>
-        	<Header/>
-            <Grid/>
-            <Grid2/>
-        </div>
-    );
-};
-
-
 class HomePage extends React.Component {
 
 	constructor(props) {
@@ -34,7 +22,12 @@ class HomePage extends React.Component {
   	render() {
 	    return (
 	    <div>
-		    <HomePage_Section/>
+		    <div className="home_page">
+                <img src="images/home_header.png" width="100%" alt=""/>
+                <Header/>
+                <Grid/>
+                <Grid2/>
+            </div>
 	    </div>
     );
   }

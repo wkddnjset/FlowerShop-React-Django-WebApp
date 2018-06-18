@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-import FlatButton from 'material-ui/FlatButton';
 
 class SignInForm extends Component {
 
@@ -41,17 +41,21 @@ class SignInForm extends Component {
 
 	handleSubmit(event){
 		event.preventDefault();
-
-		axios.post('/api/token/?format=json', {
-			username:event.target.username.value, 
-			password:event.target.password.value
+		const username = event.target.username.value;
+		const password = event.target.password.value;
+		axios.post('http://flower-server.us-east-2.elasticbeanstalk.com/api/token/?format=json', {
+			username:username,
+			password:password
 		})
 		.then(response => {
 			this.setState({open: false});
 			console.log(response.data);
 			this.props.history.push({
 				pathname: '/',
-				state:response.data.token
+				state:{
+					'token':response.data.token,
+					'username':username
+				}
 			});
 		})
 		.catch(error => {

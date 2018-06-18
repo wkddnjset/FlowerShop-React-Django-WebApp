@@ -3,15 +3,6 @@ from django.core.exceptions import ValidationError
 from ..models import *
 from django.db.models import Q
 
-class ExampleModelSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = ExampleModel
-        fields = [
-            'id',
-            'text',
-            'img'
-        ]
-
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -20,3 +11,30 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             'username',
             'password'
         ]
+
+class ShopListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = [
+            'id',
+            'title',
+            'sub_title',
+            'main_img',
+            'account',
+            'bank',
+            'lat',
+            'lon'
+        ]
+
+class FlowerListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Flower
+        fields = [
+            'id',
+            'name',
+            'shop',
+            'img',
+            'price',
+        ]
+
+

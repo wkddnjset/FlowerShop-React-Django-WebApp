@@ -7,7 +7,7 @@
 .device *::before,
 .device *::after {
   box-sizing: border-box;
-  display: block;
+  // display: block;
 }
 
 .device {

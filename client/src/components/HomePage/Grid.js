@@ -1,8 +1,9 @@
 import React from 'react';
+import { FormattedNumber } from 'react-intl';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart';
 
 const styles = {
   root: {
@@ -16,54 +17,52 @@ const styles = {
   },
 };
 
-const tilesData = [
-  {
-    img: 'images/grid-list/00-52-29-429_640.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'images/grid-list/burger-827309_640.jpg',
-    title: 'Tasty burger',
-    author: 'pashminu',
-  },
-  {
-    img: 'images/grid-list/camera-813814_640.jpg',
-    title: 'Camera',
-    author: 'Danson67',
-  },
-  {
-    img: 'images/grid-list/morning-819362_640.jpg',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-];
-
+class GridListExampleSimple extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        tilesData:[],
+      };
+  }
+  componentWillMount() {
+    fetch('http://flower-server.us-east-2.elasticbeanstalk.com/api/bestflower/?format=json')
+      .then(res => res.json())
+      .then(tilesData => this.setState({tilesData}));
+  }
 /**
  * A simple example of a scrollable `GridList` containing a [Subheader](/#/components/subheader).
  */
-const GridListExampleSimple = () => (
-  <div style={styles.root}>
-    <GridList
-      cellHeight={180}
-      style={styles.gridList}
-    >
-      <Subheader>
-        <p className="sub_header">베스트 상품</p>
-        <p className="sub_header_link"><a href="#">More >></a></p>
-      </Subheader>
-      {tilesData.map((tile) => (
-        <GridTile
-          key={tile.img}
-          title={tile.title}
-          subtitle={<span>by <b>{tile.author}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+  render() {
+    const tilesData = this.state.tilesData;
+    return (
+      <div style={styles.root}>
+        <GridList
+          cellHeight={180}
+          style={styles.gridList}
         >
-          <img src={tile.img} alt=""/>
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
-);
+          <Subheader>
+            <p className="sub_header">베스트 상품</p>
+            <p className="sub_header_link"><a href="#">More >></a></p>
+          </Subheader>
+          {tilesData.map((tile) => (
+            <GridTile
+              key={tile.img}
+              title={tile.name}
+              subtitle={<span>
+                <FormattedNumber 
+                  value={tile.price}
+                  style="currency"
+                  currency="KRW"
+                /></span>}
+              actionIcon={<IconButton><ShoppingCart color="white" /></IconButton>}
+            >
+              <img src={tile.img} alt=""/>
+            </GridTile>
+          ))}
+        </GridList>
+      </div>
+    );
+  }
+}
 
 export default GridListExampleSimple;

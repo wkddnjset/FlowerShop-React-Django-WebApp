@@ -9,15 +9,6 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-};
-
 const OrderList = () => (
   <Table>
     <TableHeader

@@ -6,14 +6,6 @@ import SearchList from './SearchList';
  * A simple example of `AppBar` with an icon on the right.
  * By default, the left icon is a navigation-menu.
  */
-const SearchPage_Section = ({location}) => {
-    return (
-        <div className="search_page">
-        <SearchBar/>
-        <SearchList/>
-        </div>
-    );
-};
 
 class SearchPage extends React.Component {
 
@@ -21,12 +13,15 @@ class SearchPage extends React.Component {
 	  super(props);
 	  this.token = this.props.location.state;
 	  console.log(this.token);
+	  console.log(this.props);
 	}
 
   	render() {
 	    return (
 	    <div>
-		    <SearchPage_Section/>
+		    <div className="search_page">
+	        	<SearchBar/>
+	        </div>
 	    </div>
     );
   }
